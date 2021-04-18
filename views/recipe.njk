@@ -1,0 +1,45 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <a href="/about" id="left_link">Sobre</a>
+    <a href="/recipes" class="active_link">Receitas</a>
+{% endblock %}    
+        
+{% block content %}        
+    <main>
+
+        <section class="recipe_card">
+            
+            <img class="fullrecipe_img" src="{{recipe.image}}" alt="{{recipe.title}}">
+            <p class="fullrecipe_name" id="{{recipe.title}}">{{recipe.title}}</p>
+            <p class="fullrecipe_author" id="{{recipe.author}}">por {{recipe.author}}</p>
+            <section class="recipe_info">
+                <div class="ingredients">
+                    <h1>Ingredientes</h1>
+                    {% for ingredient in recipe.ingredients %}
+                    <li>{{ingredient}}</li>
+                    {% endfor %}
+                </div>
+
+                <div class="preparation">
+                    <h1>Modo de preparo</h1>
+                    {% for prep in recipe.preparation %}
+                    <li>{{prep}}</li>
+                    {% endfor %}
+                </div>
+
+                {% if recipe.information != "" %}
+                <div class="information">
+                    <h1>Informações adicionais</h1>
+                    
+                    <p>{{recipe.information}}</p>
+                    
+                </div>
+                {% endif %}
+                
+            </section>
+            
+        </section>
+
+    </main>
+{% endblock %}
